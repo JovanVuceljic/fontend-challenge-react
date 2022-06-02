@@ -26,21 +26,25 @@ const App = () => {
       .then(() => fetchRecipes(page))
   }
 
-
-
   const [recipesResponse, setRecipesResponse] = useState();
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(1);
+  const [keyword, setKeyword] = useState('')
 
   useEffect(() => {
     fetchRecipes()
+    console.log('fetchRecipes');
   }, []);
 
+  useEffect(() => {
+    fetchRecipes(1, keyword)
+    console.log('fetchByKeyword');
+  }, [keyword]);
 
   return (
     <div className="App">
       <div className="frontend-challenge-container">
-        <Header fetchRecipes={fetchRecipes} />
+        <Header keyword={keyword} setKeyword={setKeyword} />
         <RecipesList recipes={recipesResponse} deleteRecipe={deleteRecipe} />
         <Pagination currentPage={page} totalPages={total} fetchRecipes={fetchRecipes} />
       </div>

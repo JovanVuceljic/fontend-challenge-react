@@ -5,12 +5,13 @@ const RecipesList = ({ recipes = [], deleteRecipe }) => {
 
 	return (
 		<div className="recipes-list">
-			{recipes.map((recipe, i) =>
+			{recipes.length !== 0 ? recipes.map((recipe, i) =>
 				<RecipeItem
 					key={i}
 					recipe={recipe}
 					deleteRecipe={deleteRecipe}
-				/>)}
+				/>) :
+				<span>No data.</span>}
 		</div>
 	)
 }

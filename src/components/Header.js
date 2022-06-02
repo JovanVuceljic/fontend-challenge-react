@@ -1,13 +1,13 @@
-
-const Header = ({ fetchRecipes }) => {
-
-	const handleSearch = e => {
-		fetchRecipes(1, e.currentTarget.value)
-	}
+const Header = ({ keyword, setKeyword }) => {
 
 	return (<header>
 		<h1>Recipes overview</h1>
-		<input type="text" className="input-filter" placeholder="Filter.." onChange={handleSearch} />
+		<input
+			type="text"
+			className="input-filter"
+			placeholder="Filter"
+			value={keyword}
+			onChange={e => setKeyword(e.currentTarget.value)} />
 	</header>)
 }
 
